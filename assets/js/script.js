@@ -145,10 +145,10 @@ function deleteTask(taskId){
     //if tasks[i].id doesn't match the value of taskId, lets keep that task and push it
     //into the new array
     if (tasks[i].id !== parseInt(taskId)){
-      updatedTaskArr.push(tasks[id]);
+      updatedTaskArr.push(tasks[i]);
     }
   }
-
+console.log(tasks);
   tasks = updatedTaskArr;
 
   saveTasks();
@@ -239,8 +239,6 @@ function loadTasks(){
     return false;
   }
   tasks = JSON.parse(tasks);
-
-  console.log(tasks);
   // iterates through a tasks array and creates task elements on the page from it
 
   for( var i = 0; i < tasks.length; i++){
@@ -257,7 +255,6 @@ function loadTasks(){
 
     var taskActionsEl = createTaskActions(tasks[i].id);
     listItemEl.appendChild(taskActionsEl);
-    console.log(listItemEl);
 
     if(tasks[i].status == "to do"){
       listItemEl.querySelector("select[name='status-change']").selectedIndex = 0;
@@ -277,7 +274,6 @@ function loadTasks(){
       tasksCompletedEl.appendChild(listItemEl);
     }
     taskIdCounter++;
-    console.log(listItemEl)
   }
 }
 
